@@ -1,4 +1,4 @@
-package pingpong;
+package minitennis;
 
 public class PongGame {
 

@@ -1,4 +1,4 @@
-package pingpong;
+package minitennis;
 
 public enum Player {
 	player1,

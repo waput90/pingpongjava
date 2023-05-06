@@ -1,4 +1,4 @@
-package pingpong;
+package minitennis;
 import java.awt.*;
 
 public class Score extends Rectangle{
