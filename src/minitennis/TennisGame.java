@@ -1,6 +1,6 @@
 package minitennis;
 
-public class PongGame {
+public class TennisGame {
 
 	public static void main(String[] args) {
 		
