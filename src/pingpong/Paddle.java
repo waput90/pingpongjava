@@ -24,14 +24,6 @@ public class Paddle extends Rectangle {
 				setYDirection(speed);
 			}
 			break;
-		case player2:
-			if(e.getKeyCode()==KeyEvent.VK_UP) {
-				setYDirection(-speed);
-			}
-			if(e.getKeyCode()==KeyEvent.VK_DOWN) {
-				setYDirection(speed);
-			}
-			break;
 		}
 	}
 	public void keyReleased(KeyEvent e) {
@@ -41,14 +33,6 @@ public class Paddle extends Rectangle {
 				setYDirection(0);
 			}
 			if(e.getKeyCode()==KeyEvent.VK_S) {
-				setYDirection(0);
-			}
-			break;
-		case player2:
-			if(e.getKeyCode()==KeyEvent.VK_UP) {
-				setYDirection(0);
-			}
-			if(e.getKeyCode()==KeyEvent.VK_DOWN) {
 				setYDirection(0);
 			}
 			break;

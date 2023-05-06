@@ -4,6 +4,7 @@ import java.awt.event.*;
 import java.util.*;
 import javax.swing.*;
 
+// this is my main class
 public class GamePanel extends JPanel implements Runnable{
 
 	static final int GAME_WIDTH = 1000;
@@ -50,7 +51,6 @@ public class GamePanel extends JPanel implements Runnable{
 	}
 	public void draw(Graphics g) {
 		paddle1.draw(g);
-		paddle2.draw(g);
 		ball.draw(g);
 		score.draw(g);
 		Toolkit.getDefaultToolkit().sync();
@@ -80,8 +80,23 @@ public class GamePanel extends JPanel implements Runnable{
 				ball.yVelocity--;
 			ball.setXDirection(ball.xVelocity);
 			ball.setYDirection(ball.yVelocity);
+			score.player++;
 		}
-		if(ball.intersects(paddle2)) {
+		// frame limit
+		if(paddle1.y<=0)
+			paddle1.y=0;
+		if(paddle1.y >= (GAME_HEIGHT-PADDLE_HEIGHT))
+			paddle1.y = GAME_HEIGHT-PADDLE_HEIGHT;
+		
+		// player ball frame
+		if(ball.x <= 0) {
+			score.player = 0;
+			newPaddles();
+			newBall();
+		}
+		if(ball.x >= GAME_WIDTH-BALL_DIAMETER) {
+
+
 			ball.xVelocity = Math.abs(ball.xVelocity);
 			
 			ball.xVelocity = ball.xVelocity + SPEED_VELOCITY_UPON_PADDLE;
@@ -90,28 +105,6 @@ public class GamePanel extends JPanel implements Runnable{
 
 			ball.setXDirection(-ball.xVelocity);
 			ball.setYDirection(ball.yVelocity);
-		}
-		
-		// frame limit
-		if(paddle1.y<=0)
-			paddle1.y=0;
-		if(paddle1.y >= (GAME_HEIGHT-PADDLE_HEIGHT))
-			paddle1.y = GAME_HEIGHT-PADDLE_HEIGHT;
-		if(paddle2.y<=0)
-			paddle2.y=0;
-		if(paddle2.y >= (GAME_HEIGHT-PADDLE_HEIGHT))
-			paddle2.y = GAME_HEIGHT-PADDLE_HEIGHT;
-		
-		// player ball frame
-		if(ball.x <=0) {
-			score.player2++;
-			newPaddles();
-			newBall();
-		}
-		if(ball.x >= GAME_WIDTH-BALL_DIAMETER) {
-			score.player1++;
-			newPaddles();
-			newBall();
 		}
 	}
 	public void run() {
